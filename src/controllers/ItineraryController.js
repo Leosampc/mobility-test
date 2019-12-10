@@ -74,6 +74,14 @@ const controller = {
         });
     },
 
+    deleteByLineId: async (req, res) => {
+        const { line_id } = req.params;
+
+        await ItineraryModel.deleteOne({ line_id });
+
+        res.send("Operation successful!");
+    },
+
     checkIfLineExists: async id => {
         const line = await LineModel.findOne({ id });
 
