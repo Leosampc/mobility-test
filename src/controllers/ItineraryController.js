@@ -82,6 +82,32 @@ const controller = {
         res.send("Operation successful!");
     },
 
+    deleteItinerariesByLineId: async (req, res) => {
+        const { line_id } = req.params;
+
+        const { itineraries } = req.body;
+
+        const current_itinerary = await ItineraryModel.findOne({ line_id });
+
+        if(!current_itinerary) return res.status(400).json({ error: "Itinerary not found, please try again." });
+
+        if(!current_itinerary.itineraries) return res.status(200).json({ message: "Operation successful!" });
+
+        await Promise.all([
+            itineraries.forEach(async itinerary_to_remove => {
+                const index = current_itinerary.itineraries.findIndex(itinerary => {
+                    return itinerary_to_remove.lat === itinerary.lat && itinerary_to_remove.lng === itinerary.lng
+                })
+    
+                if(index) current_itinerary.itineraries.splice(index, 1);
+            })
+        ])
+
+        current_itinerary.save();
+
+        return res.json(current_itinerary);
+    },
+
     checkIfLineExists: async id => {
         const line = await LineModel.findOne({ id });
 
