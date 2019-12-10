@@ -14,6 +14,7 @@ routes.delete('/lines/:id', LineController.deleteById);
 routes.get('/itineraries', ItineraryController.findAll);
 routes.post('/itineraries', ItineraryController.store);
 routes.put('/itineraries/:line_id', ItineraryController.update);
-routes.delete('/itineraries/:line_id', ItineraryController.deleteByLineId); 
+routes.delete('/itineraries/delete-all/:line_id', ItineraryController.deleteByLineId);
+routes.delete('/itineraries/delete-each/:line_id', ItineraryController.deleteItinerariesByLineId);
 
 module.exports = routes;
