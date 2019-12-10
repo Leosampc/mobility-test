@@ -19,6 +19,6 @@ const LineSchema = new Schema({
     timestamps: true //createdAt e updatedAt sao criadas automaticamente
 });
 
-LineSchema.plugin(AutoIncrement, { id:'order_seq', inc_field: 'id' });
+LineSchema.plugin(AutoIncrement, { id:'line_id', inc_field: 'id' });
 
 module.exports = model('Line', LineSchema);
