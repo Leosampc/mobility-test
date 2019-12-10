@@ -39,6 +39,6 @@ const ItinerarySchema = new Schema({
     timestamps: true //createdAt e updatedAt sao criadas automaticamente
 });
 
-ItinerarySchema.plugin(AutoIncrement, { id:'order_seq', inc_field: 'id' });
+ItinerarySchema.plugin(AutoIncrement, { id:'itinerary_id', inc_field: 'id' });
 
 module.exports = model('Itinerary', ItinerarySchema);  
