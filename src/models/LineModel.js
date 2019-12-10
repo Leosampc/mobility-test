@@ -21,4 +21,4 @@ const LineSchema = new Schema({
 
 LineSchema.plugin(AutoIncrement, { id:'order_seq', inc_field: 'id' });
 
-module.exports = model('Dev', LineSchema);
+module.exports = model('Line', LineSchema);
