@@ -1,10 +1,14 @@
 const express = require('express');
-const mysql = require('mysql');
+const mongoose = require('mongoose');
 const cors = require('cors');
 
 const routes = require('./routes');
 
 const server = express();
+
+mongoose.connect('mongodb+srv://mobility-user:cbut23g8k4@cluster0-5hdjy.mongodb.net/mobility-test?retryWrites=true&w=majority', {
+    useNewUrlParser: true
+});
 
 server.use(cors());
 server.use(express.json());
