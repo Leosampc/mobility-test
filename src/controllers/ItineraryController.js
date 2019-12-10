@@ -60,6 +60,20 @@ const controller = {
         }
     },
 
+    findAll: async (req, res) => {
+        const { line_id = null } = req.query;
+
+        const query = line_id
+            ? { line_id }
+            : { }
+
+        await ItineraryModel.find(query, (err, result) => {
+            if(err) return res.status(400).json({ error: 'An error has ocurred while trying to itineraries, please try again.' });
+
+            return res.json(result);
+        });
+    },
+
     checkIfLineExists: async id => {
         const line = await LineModel.findOne({ id });
 
