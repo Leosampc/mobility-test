@@ -11,6 +11,7 @@ routes.post('/lines', LineController.store);
 routes.put('/lines/:id', LineController.update);
 routes.delete('/lines/:id', LineController.deleteById);
 
+routes.get('/itineraries', ItineraryController.findAll);
 routes.post('/itineraries', ItineraryController.store);
 routes.put('/itineraries/:line_id', ItineraryController.update);
  
