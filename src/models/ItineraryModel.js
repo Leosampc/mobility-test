@@ -23,18 +23,21 @@ const ItinerarySchema = new Schema({
         type: String,
         required: true
     },
-    itineraries: [
-        {
-            lat: {
-                type: String,
-                required: true
-            },
-            lng: {
-                type: String,
-                required: true
-            },
-        }
-    ]
+    location: {
+        type: {
+            type: String,
+            enum: ['MultiPoint'],
+            required: true
+        },
+        coordinates: [
+            [
+                {
+                    type: [Number],
+                    required: true
+                }
+            ]
+        ]
+    }
 }, {
     timestamps: true //createdAt e updatedAt sao criadas automaticamente
 });
