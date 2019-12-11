@@ -12,7 +12,7 @@ const controller = {
         const itineraryExists = await ItineraryModel.findOne({ line_id });
 
         if(itineraryExists) {
-            itineraries.forEach(itinerary => itineraryExists.itineraries.push(itinerary));
+            itineraries.forEach(itinerary => itineraryExists.location.coordinates.push(itinerary));
             itineraryExists.save();
             return res.json(itineraryExists);
         }
@@ -24,8 +24,12 @@ const controller = {
             line_id,
             line_code,
             line_name,
-            itineraries
+            location: {
+                type: "MultiPoint",
+                coordinates: itineraries
+            }
         }, (err, itinerary) => {
+            console.log(err);
             if(err) res.status(400).json({ error: 'An error has ocurred when trying to create a new itinerary, please try again.' });
 
             res.json(itinerary);
@@ -50,7 +54,7 @@ const controller = {
             itinerary.line_name = name;
 
             if(itineraries)
-                itineraries.forEach(new_itinerary => itinerary.itineraries.push(new_itinerary));
+                itineraries.forEach(new_itinerary => itinerary.location.coordinates.push(new_itinerary));  
 
             itinerary.save();
             
@@ -91,15 +95,15 @@ const controller = {
 
         if(!current_itinerary) return res.status(400).json({ error: "Itinerary not found, please try again." });
 
-        if(!current_itinerary.itineraries) return res.status(200).json({ message: "Operation successful!" });
+        if(!current_itinerary.location) return res.status(200).json({ message: "Operation successful!" });
 
         await Promise.all([
             itineraries.forEach(async itinerary_to_remove => {
-                const index = current_itinerary.itineraries.findIndex(itinerary => {
-                    return itinerary_to_remove.lat === itinerary.lat && itinerary_to_remove.lng === itinerary.lng
+                const index = current_itinerary.location.coordinates.findIndex(itinerary => {
+                    return itinerary_to_remove === itinerary
                 })
     
-                if(index) current_itinerary.itineraries.splice(index, 1);
+                if(index) current_itinerary.location.coordinates.splice(index, 1);
             })
         ])
 
