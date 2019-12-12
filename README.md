@@ -181,7 +181,50 @@ command line steps
 
 * **Notes:**
 
-    None 
+    None
+    
+***Find buslines by radius location***
+
+* **URL**
+
+    /lines/location
+
+* **Method:**
+
+    `GET`
+  
+*  **URL Params**
+	
+   None	
+
+* **Data Params**
+
+    `lat[Number]`
+   `lng[Number]`
+   `distance=[Integer]`  
+
+* **Success Response:**
+
+  * **Code:** 200 <br />
+    **Content:** 
+    ```
+    [
+        {
+    		"id": 3,
+    		"code": "074-1",
+    		"name": "testeee Name"
+  	},
+	...results
+    ]
+    ```
+    
+* **Sample Call:**
+
+    `fetch('/lines/location?lat=-30.124100584753&lng=-51.22352311129&distance=5')`
+
+* **Notes:**
+
+    Distance is a radius calculated by KM, so `distance = 1` = `1KM radius`    
     
 ***Register a busline***
 
@@ -381,11 +424,172 @@ command line steps
 
     `line_id` query param filters list by reference line id.
 
-***Delete a itinerary***
+***Register a itinerary***
+
+* **URL**
+
+    /itineraries
+
+* **Method:**
+
+    `POST`
+  
+*  **URL Params**
+
+    None 
+
+* **Data Params**
+
+    `line_id=[Integer]`
+    `itineraries[Array[Number]]`
+
+* **Success Response:**
+
+  * **Code:** 200 <br />
+    **Content:** 
+    ```
+    {
+	    "location": {
+	      "coordinates": [
+		[
+		  -30.124100584753,
+		  -51.22352311129
+		]
+	      ],
+	      "type": "MultiPoint"
+	    },
+	    "_id": "5df12922284dd035e4683ebb",
+	    "line_objectId": "5defd142f7c78245f2b85525",
+	    "line_id": 3,
+	    "line_code": "074-1",
+	    "line_name": "testeee Name",
+	    "createdAt": "2019-12-11T17:36:34.829Z",
+	    "updatedAt": "2019-12-11T17:36:34.829Z",
+	    "id": 10,
+	    "__v": 0
+    }
+    ```
+    
+* **Sample Call:**
+
+    ```
+    fetch('/itineraries', {
+    	method: 'POST',
+	data: JSON.stringify(
+		{
+			"line_id": 4,
+			"itineraries": [
+				[-37.11750758475300000, -56.20633111129000000]
+			]
+		}
+	)
+    })
+    ```
+
+* **Notes:**
+
+    If the itinerary already exists, so is updated.
+
+***Update a itinerary***
 
 * **URL**
 
     /itineraries/:line_id
+
+* **Method:**
+
+    `PUT`
+  
+*  **URL Params**
+
+    `line_id[Integer]` 
+
+* **Data Params**
+
+    `itineraries[Array[Number]]`
+
+* **Success Response:**
+
+  * **Code:** 200 <br />
+    **Content:** 
+    ```
+    {
+	"itineraries": [
+		[-37.11750758475300000, -56.20633111129000000]
+	]
+    }
+    ```
+    
+* **Sample Call:**
+
+    ```
+    fetch('/itineraries/4', {
+    	method: 'PUT',
+	data: JSON.stringify(
+		{
+			"itineraries": [
+				[-37.11750758475300000, -56.20633111129000000]
+			]
+		}
+	)
+    })
+    ```
+
+* **Notes:**
+
+    None
+
+***Delete a itinerary row***
+
+* **URL**
+
+    /itineraries/delete-each/:line_id
+
+* **Method:**
+
+    `DELETE`
+  
+* **URL Params**
+
+    None
+
+* **Data Params**
+  
+  None
+
+* **Success Response:**
+
+  * **Code:** 200 <br />
+    **Content:** 
+    ```
+    Operation sucessful!
+    
+    ```
+    
+* **Sample Call:**
+
+    ```
+    fetch('/itineraries/1', {
+        method: 'DELETE',
+	body: JSON.stringify(
+		{
+			"itineraries": [
+				[-37.11750758475300000, -56.20633111129000000]
+			]
+		}
+	)
+    })
+    ```
+
+* **Notes:**
+
+    None
+
+***Delete a itinerary***
+
+* **URL**
+
+    /itineraries/delete-all:line_id
 
 * **Method:**
 
