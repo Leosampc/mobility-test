@@ -2,6 +2,7 @@ const express = require('express');
 
 const LineController = require('../controllers/LineController');
 const ItineraryController = require('../controllers/ItineraryController');
+const TaxiStandController = require('../controllers/TaxiStandController');
 
 const routes = express.Router();
 
@@ -16,5 +17,9 @@ routes.post('/itineraries', ItineraryController.store);
 routes.put('/itineraries/:line_id', ItineraryController.update);
 routes.delete('/itineraries/delete-all/:line_id', ItineraryController.deleteByLineId);
 routes.delete('/itineraries/delete-each/:line_id', ItineraryController.deleteItinerariesByLineId);
+
+routes.use('/taxi-stands/public', TaxiStandController.renderStand);
+routes.get('/taxi-stands', TaxiStandController.readStand);
+routes.post('/taxi-stands', TaxiStandController.writeStand);
 
 module.exports = routes;
