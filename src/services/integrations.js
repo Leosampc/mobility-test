@@ -37,7 +37,7 @@ const integrations = {
 
             return res.json(lines);
         } catch (err) {
-            res.status(400).json({ error: "An error ocurred on datapoa request, please try again." });
+            res.status(400).json({ error: "An error ocurred on poatransporte request, please try again." });
         }
     }
 }
