@@ -1,9 +1,9 @@
 ﻿# Mobility-test
-----
+ 
   Essa aplicação foi desenvolvida com o intuito de realizar um teste de conhecimentos de NodeJS, além de suas tecnologias relacionadas. 
   Foi criado um sistema de APIs REST, com o intuito de integrar, manusear e fornecer informações relacionadas à serviços de transporte público.
 
-# Como executar o projeto
+**Como executar o projeto**
 
 1. --
 2. --
