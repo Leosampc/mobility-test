@@ -6,11 +6,15 @@ const integrations = {
 
         dataPoaApi.get('datastore_search?resource_id=c8cf58cf-649c-49b1-af78-d0e0beeb6332', {
                 params: {
-                    search: search ? search.trim() : null,
+                    q: search ? search.trim() : null,
                     limit: limit || null
                 }
             })
-            .then(response => res.json(response.data) || {})
+            .then(({ data }) => {
+                const { result: { records } } = data;
+                console.log(records);
+                res.json(records) || {};
+            })
             .catch(err => res.status(400).json({ error: "An error ocurred on datapoa request, please try again." }));
     },
 
