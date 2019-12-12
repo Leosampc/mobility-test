@@ -13,6 +13,7 @@ const routes = express.Router();
 routes.get('/datapoa-integration', datapoa);
 routes.get('/poatransporte-integration', poatransporte);
 
+routes.get('/lines/location-distance', ItineraryController.getItinerariesByLocation);
 routes.get('/lines', LineController.findAll);
 routes.get('/lines/:id', LineController.findById);
 routes.post('/lines', LineController.store);
