@@ -223,6 +223,7 @@ command line steps
 
   ```
   fetch('/lines', {
+   method: 'POST',
    body: JSON.stringify({
     "code": "0714-1",
 	   "name": "testeee Name"
@@ -273,6 +274,7 @@ command line steps
 
   ```
   fetch('/lines/1', {
+   method: 'PUT',
    body: JSON.stringify({
     "code": "05-1",
 	   "name": "name updated"
@@ -284,4 +286,42 @@ command line steps
 
   None
   
+***Delete a busline***
+
+* **URL**
+
+  /lines/:id
+
+* **Method:**
+
+  `DELETE`
   
+*  **URL Params**
+
+  None
+
+* **Data Params**
+  
+  None
+
+* **Success Response:**
+
+  * **Code:** 200 <br />
+    **Content:** 
+    ```
+    Operation sucessful!
+    
+    ```
+    
+* **Sample Call:**
+
+  ```
+  fetch('/lines/1', {
+   method: 'DELETE'
+  })
+   ```
+
+* **Notes:**
+
+  None
+    
