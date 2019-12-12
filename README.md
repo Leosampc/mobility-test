@@ -31,6 +31,7 @@ command line steps
 * **Data Params**
 
   `search=[String]`
+  
   `limit=[Integer]`
 
 * **Success Response:**
