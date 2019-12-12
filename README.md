@@ -16,40 +16,19 @@ command line steps
 
 ## REST endpoints
 
-***`datapoa.com.br` API integration***
+Below is a list of all endpoints provided by the API.
 
-* **URL**
+[Integrations][]
+- **[<code>GET</code> Datapoa services](/documentation/integration/GET_datapoa_services.md)**
+- **[<code>GET</code> Poatransporte services](/documentation/integration/GET_poatransporte_services.md)**
 
-    /datapoa-integration
+[Lines][]
+- **[<code>GET</code> Search lines](/documentation/lines/GET_lines.md)**
+- **[<code>GET</code> Search specific line](/documentation/lines/GET_line.md)**
+- **[<code>POST</code> Register a line](/documentation/lines/POST_line.md)**
+- **[<code>PUT</code> Update a line](/documentation/lines/UPDATE_line.md)**
+- **[<code>DELETE</code> Delete a line](/documentation/lines/DELETE_line.md)**
 
-* **Method:**
-
-    `GET`
-  
-*  **URL Params**
-
-    None 
-
-* **Data Params**
-
-    `search=[String]`
-  
-    `limit=[Integer]`
-
-* **Success Response:**
-
-  * **Code:** 200 <br />
-    **Content:** 
-    ```
-    [
-        {"_id":1,"data_extracao":"2019-10-11T11:43:00","linha":"T52  ","sentido":"SULNORTE","numero_sequencia":1,"tipo":"TERMINAL/PARADA","nome":"TERMINAL SUL PERI MACHADO     ","endereco_logradouro":"PERI MACHADO                         "},
-        ...results
-    ]
-    ```
-    
-* **Sample Call:**
-    
-    `fetch('/datapoa-integration?search=sul&limit=5')`
 
 ***`poatransporte.com.br` API integration***
 
