@@ -4,7 +4,14 @@ const LineController = require('../controllers/LineController');
 const ItineraryController = require('../controllers/ItineraryController');
 const TaxiStandController = require('../controllers/TaxiStandController');
 
+const { datapoa, poatransporte } = require('../services/integrations');
+
 const routes = express.Router();
+
+
+
+routes.get('/datapoa-integration', datapoa);
+routes.get('/poatransporte-integration', poatransporte);
 
 routes.get('/lines', LineController.findAll);
 routes.get('/lines/:id', LineController.findById);
