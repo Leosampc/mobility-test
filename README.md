@@ -1,7 +1,7 @@
 ﻿# Mobility-test
  
-  Essa aplicação foi desenvolvida com o intuito de realizar um teste de conhecimentos de NodeJS, além de suas tecnologias relacionadas. 
-  Foi criado um sistema de APIs REST, com o intuito de integrar, manusear e fornecer informações relacionadas à serviços de transporte público.
+    Essa aplicação foi desenvolvida com o intuito de realizar um teste de conhecimentos de NodeJS, além de suas tecnologias relacionadas. 
+    Foi criado um sistema de APIs REST, com o intuito de integrar, manusear e fornecer informações relacionadas à serviços de transporte público.
 
 **Como executar o projeto**
 
@@ -20,21 +20,21 @@ command line steps
 
 * **URL**
 
-  /datapoa-integration
+    /datapoa-integration
 
 * **Method:**
 
-  `GET`
+    `GET`
   
 *  **URL Params**
 
-   None 
+    None 
 
 * **Data Params**
 
-  `search=[String]`
+    `search=[String]`
   
-  `limit=[Integer]`
+    `limit=[Integer]`
 
 * **Success Response:**
 
@@ -48,32 +48,32 @@ command line steps
     ```
     
 * **Sample Call:**
-
-  `fetch('/datapoa-integration?search=sul&limit=5')`
+    
+    `fetch('/datapoa-integration?search=sul&limit=5')`
 
 ***`poatransporte.com.br` API integration***
 
 * **URL**
 
-  /poatransporte-integration
+    /poatransporte-integration
 
 * **Method:**
 
-  `GET`
+    `GET`
   
 *  **URL Params**
 
-   None 
+    None 
 
 * **Data Params**
 
-  `action=[String]`
+    `action=[String]`
   
-  `type=[String]`
+    `type=[String]`
   
-  `param=[String]`
+    `param=[String]`
   
-  `busline=[String]`  
+    `busline=[String]`  
 
 * **Success Response:**
 
@@ -88,7 +88,7 @@ command line steps
     
 * **Sample Call:**
 
-  `fetch('/poatransporte-integration?action=nc&type=o&busline=MAIO')`
+    `fetch('/poatransporte-integration?action=nc&type=o&busline=MAIO')`
 
 * **Notes:**
 
@@ -98,19 +98,19 @@ command line steps
 
 * **URL**
 
-  /lines
+    /lines
 
 * **Method:**
 
-  `GET`
+    `GET`
   
 *  **URL Params**
 
-   None 
+    None 
 
 * **Data Params**
 
-  `name=[String]`  
+    `name=[String]`  
 
 * **Success Response:**
 
@@ -133,7 +133,7 @@ command line steps
     
 * **Sample Call:**
 
-  `fetch('/lines')`
+    `fetch('/lines')`
 
 * **Notes:**
 
@@ -143,11 +143,11 @@ command line steps
 
 * **URL**
 
-  /lines/:id
+    /lines/:id
 
 * **Method:**
 
-  `GET`
+    `GET`
   
 *  **URL Params**
 
@@ -155,7 +155,7 @@ command line steps
 
 * **Data Params**
 
-  None  
+    None  
 
 * **Success Response:**
 
@@ -177,7 +177,7 @@ command line steps
     
 * **Sample Call:**
 
-  `fetch('/lines/1')`
+    `fetch('/lines/1')`
 
 * **Notes:**
 
@@ -187,21 +187,21 @@ command line steps
 
 * **URL**
 
-  /lines
+    /lines
 
 * **Method:**
 
-  `POST`
+    `POST`
   
 *  **URL Params**
 
-   None 
+    None 
 
 * **Data Params**
 
-  `code=[String]`
+    `code=[String]`
   
-  `name=[String]`
+    `name=[String]`
 
 * **Success Response:**
 
@@ -221,15 +221,15 @@ command line steps
     
 * **Sample Call:**
 
-  ```
-  fetch('/lines', {
-   method: 'POST',
-   body: JSON.stringify({
-    "code": "0714-1",
-	   "name": "testeee Name"
-   })
-  })
-   ```
+    ```
+    fetch('/lines', {
+        method: 'POST',
+        body: JSON.stringify({
+            "code": "0714-1",
+            "name": "testeee Name"
+        })
+    })
+    ```
 
 * **Notes:**
 
@@ -240,11 +240,11 @@ command line steps
 
 * **URL**
 
-  /lines/:id
+    /lines/:id
 
 * **Method:**
 
-  `PUT`
+    `PUT`
   
 *  **URL Params**
 
@@ -252,7 +252,7 @@ command line steps
 
 * **Data Params**
   
-  None
+    None
 
 * **Success Response:**
 
@@ -261,48 +261,48 @@ command line steps
     ```
     {
     	"_id": "5defd12ff7c78245f2b85523",
-	"code": "05-1",
-	"name": "test Name",
-	"createdAt": "2019-12-10T17:09:03.785Z",
-	"updatedAt": "2019-12-12T18:10:23.155Z",
-	"id": 1,
-	"__v": 0
+        "code": "05-1",
+        "name": "test Name",
+        "createdAt": "2019-12-10T17:09:03.785Z",
+        "updatedAt": "2019-12-12T18:10:23.155Z",
+        "id": 1,
+	    "__v": 0
     }
     ```
     
 * **Sample Call:**
 
-  ```
-  fetch('/lines/1', {
-   method: 'PUT',
-   body: JSON.stringify({
-    "code": "05-1",
-	   "name": "name updated"
-   })
-  })
-   ```
+    ```
+    fetch('/lines/1', {
+        method: 'PUT',
+        body: JSON.stringify({
+            "code": "05-1",
+            "name": "name updated"
+        })
+    })
+    ```
 
 * **Notes:**
 
-  None
+    None
   
 ***Delete a busline***
 
 * **URL**
 
-  /lines/:id
+    /lines/:id
 
 * **Method:**
 
-  `DELETE`
+    `DELETE`
   
 *  **URL Params**
 
-  None
+    None
 
 * **Data Params**
   
-  None
+    None
 
 * **Success Response:**
 
@@ -315,33 +315,33 @@ command line steps
     
 * **Sample Call:**
 
-  ```
-  fetch('/lines/1', {
-   method: 'DELETE'
-  })
-   ```
+    ```
+    fetch('/lines/1', {
+        method: 'DELETE'
+    })
+    ```
 
 * **Notes:**
 
-  None
+    None
 
 ***Find all itineraries***
 
 * **URL**
 
-  /itineraries
+    /itineraries
 
 * **Method:**
 
-  `GET`
+    `GET`
   
 *  **URL Params**
 
-   None 
+    None 
 
 * **Data Params**
 
-  `line_id=[Integer]`  
+    `line_id=[Integer]`  
 
 * **Success Response:**
 
@@ -375,7 +375,7 @@ command line steps
     
 * **Sample Call:**
 
-  `fetch('/itineraries')`
+    `fetch('/itineraries')`
 
 * **Notes:**
 
@@ -385,15 +385,15 @@ command line steps
 
 * **URL**
 
-  /itineraries/:line_id
+    /itineraries/:line_id
 
 * **Method:**
 
-  `DELETE`
+    `DELETE`
   
-*  **URL Params**
+* **URL Params**
 
-  None
+    None
 
 * **Data Params**
   
@@ -410,102 +410,102 @@ command line steps
     
 * **Sample Call:**
 
-  ```
-  fetch('/itineraries/1', {
-   method: 'DELETE'
-  })
-   ```
+    ```
+    fetch('/itineraries/1', {
+        method: 'DELETE'
+    })
+    ```
 
 * **Notes:**
 
-  None
+    None
 
 ***Search taxi stands***
 
 * **URL**
 
-  /taxi-stands
+    /taxi-stands
 
 * **Method:**
 
-  `GET`
+    `GET`
   
 *  **URL Params**
 
-  None
+    None
 
 * **Data Params**
   
-  `search=[string]`
+    `search=[string]`
 
 * **Success Response:**
 
   * **Code:** 200 <br />
     **Content:** 
     ```
-    	{
-	  "data": [
-	    "PONTO-ZONA-SUL#-30.123733798178#-51.222660282341#2019-12-12T13:58:29.496",
-	    ...results
-	  ]
+    {
+        "data": [
+            "PONTO-ZONA-SUL#-30.123733798178#-51.222660282341#2019-12-12T13:58:29.496",
+            ...results
+	    ]
 	}
     
     ```
     
 * **Sample Call:**
 
-  ```
-  fetch('/taxi-stands')
-   ```
+    ```
+    fetch('/taxi-stands')
+    ```
 
 * **Notes:**
 
-  None
+    None
   
 ***Write taxi stands***
 
 * **URL**
 
-  /taxi-stands
+    /taxi-stands
 
 * **Method:**
 
-  `POST`
+    `POST`
   
 *  **URL Params**
 
-  None
+    None
 
 * **Data Params**
   
-  `name=[string]`
-  `lat=[Float]`
-  `lng=[Float]`
+    `name=[string]`
+    `lat=[Float]`
+    `lng=[Float]`
 
 * **Success Response:**
 
   * **Code:** 200 <br />
     **Content:** 
     ```
-    	{
-	  "writing_line": "PONTO-ZONA-SUL#-30.123733798178#-51.222660282341#2019-12-12T13:58:29.496"
+    {
+	    "writing_line": "PONTO-ZONA-SUL#-30.123733798178#-51.222660282341#2019-12-12T13:58:29.496"
 	}
     
     ```
     
 * **Sample Call:**
 
-  ```
-  fetch('/itineraries/1', {
-   method: 'POST',
-   body: JSON.stringify({
-   	"name": "ponto zona sul",
-	"lat": -30.123733798178,
-	"lng": -51.222660282341
-   })
-  })
-   ```
+    ```
+    fetch('/itineraries/1', {
+        method: 'POST',
+        body: JSON.stringify({
+            "name": "ponto zona sul",
+            "lat": -30.123733798178,
+            "lng": -51.222660282341
+        })
+    })
+    ```
 
 * **Notes:**
 
-  None  
+    None  
