@@ -33,7 +33,8 @@ const ItinerarySchema = new Schema({
             [
                 {
                     type: [Number],
-                    required: true
+                    required: true,
+                    index: '2dsphere'
                 }
             ]
         ]
@@ -41,6 +42,8 @@ const ItinerarySchema = new Schema({
 }, {
     timestamps: true //createdAt e updatedAt sao criadas automaticamente
 });
+
+ItinerarySchema.index({ location: "2dsphere" });
 
 ItinerarySchema.plugin(AutoIncrement, { id:'itinerary_id', inc_field: 'id' });
 
