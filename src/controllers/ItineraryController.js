@@ -64,6 +64,41 @@ const controller = {
         }
     },
 
+    getItinerariesByLocation: async (req, res) => {
+        const { lat, lng, distance } = req.query;
+
+        if(!Number(lat) || !Number(lng) || !Number(distance)) return res.status(400).json({ error: "Query params are invalid, please try again." });
+        
+        try {
+            const itineraries = await ItineraryModel.find({
+                location: {
+                    $near: {
+                        $maxDistance: distance * 1000,
+                        $geometry: {
+                            type: "MultiPoint",
+                            coordinates: [ lat, lng ]
+                        }
+                    }
+                }
+            });
+
+            const lines = itineraries.length
+                ? itineraries.map(itinerary => {
+                    const { line_id, line_code, line_name } = itinerary;
+                    return {
+                        id: line_id,
+                        code: line_code,
+                        name: line_name
+                    };
+                })
+                : [];
+
+            return res.json(lines);    
+        } catch (err) {
+            return res.status(400).json({ error: "An error has ocurred, please try again." });
+        }
+    },
+
     findAll: async (req, res) => {
         const { line_id = null } = req.query;
 
