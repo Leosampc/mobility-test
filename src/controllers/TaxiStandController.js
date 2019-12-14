@@ -1,7 +1,7 @@
 const fileSystem = require('fs');
 
-const controller = {
-    writeStand: (req, res) => {
+class TaxiStandController {
+    writeStand (req, res) {
         const { name, lat, lng } = req.body;
 
         if(!name || !lat || !lng) return res.status(400).json({ error: "Body fields are invalid, please try again." });
@@ -25,9 +25,9 @@ const controller = {
         } finally {
             if(fileToWrite !== undefined) fileSystem.closeSync(fileToWrite);
         }
-    },
+    }
 
-    readStand: async (req, res) => {
+    async readStand (req, res) {
         const { search } = req.query;
 
         let fileToRead;
@@ -50,9 +50,9 @@ const controller = {
         } finally {
             if(fileToRead !== undefined) fileSystem.closeSync(fileToRead);
         }
-    },
+    }
 
-    renderStand: (req, res) => {
+    renderStand (req, res) {
         let fileToRead;
 
         try {
@@ -73,4 +73,4 @@ const controller = {
     }
 }
 
-module.exports = controller;
+module.exports = new TaxiStandController();
