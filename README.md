@@ -12,11 +12,7 @@ Foi criado um sistema de APIs REST, com o intuito de integrar, manusear e fornec
 ```
 command line steps
 
-```​
-20
-## Usage
-21
-
+```
 
 ## REST endpoints
 
