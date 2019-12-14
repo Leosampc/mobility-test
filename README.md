@@ -4,11 +4,11 @@ Essa aplicação foi desenvolvida com o intuito de realizar um teste de conhecim
 Foi criado um sistema de APIs REST, com o intuito de integrar, manusear e fornecer informações relacionadas à serviços de transporte público.
 Utilizei como base de dados o MongoDB, um banco NO-SQL extremante performático. Um dos principais motivos em optar pelo Mongo foi por conta de o mesmo possuir uma grande gama de funcionalidades relacionadas à geolocalização, um dos grandes pontos do teste.
 
-**Como executar o projeto**
+**How to run the project**
 
-1. Ter o Docker previamente instalado na máquina.
-2. Clonar o repositório e ir até o diretório.
-3. Startar os containers com o docker compose.
+1. Have Docker installed on the machine.
+2. Clone repository and go to directory.
+3. Starting containers with the docker compose.
 
 ```
 git clone https://github.com/Leosampc/mobility-test.git
@@ -47,8 +47,8 @@ Below is a list of all endpoints provided by the API.
 
 ## Libs utilizadas
 
-* **axios**: Utilizado para realizar as chamadas http com os serviços de terceiros.
-* **cors**: utilizado para estabelecer as configurações das requisições ao server.
-* **express**: Express é framework flexivel para o nodejs que fornece um conjunto de diversos recursos para a aplicação (estrutura do projeto, rotas, etc). Utilizei-o para construir toda a base da aplicação.
-* **mongoose**: Biblioteca do Nodejs que proporciona uma solução baseada em esquemas para modelar os dados da sua aplicação através do MongoDB. Utilizei para realizar a conexão com o banco de dados, CRUD, etc.
-* **mongoose-sequence**: Plugin utilizado para autoincrementar alfanuméricos. Utilizei para gerar IDs INTEIROS similares a bancos relacionais, como por ex o MySQL.
+* **axios**: Used to make http calls with third party services.
+* **cors**: Used to configure server request settings.
+* **express**: Express is a flexible nodejs framework that provides a set of various features for the application (project structure, routes, etc.). I used it to build the entire application base.
+* **mongoose**: Nodejs library that provides a schema-based solution for modeling your application data through MongoDB. I used to make the connection to the database, CRUD, etc..
+* **mongoose-sequence**: Plugin used to auto-increment alphanumerics. Used to generate Integers IDs similar to relational databases, such as MySQL.
