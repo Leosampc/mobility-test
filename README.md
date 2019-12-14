@@ -47,7 +47,7 @@ Below is a list of all endpoints provided by the API.
 - **[<code>POST</code> Register a taxi stand](/documentation/taxi-stands/POST_taxi-stands.md)**
 
 
-## Libs utilizadas
+## Used libs
 
 * **axios**: Used to make http calls with third party services.
 * **cors**: Used to configure server request settings.
