@@ -13,7 +13,7 @@ Utilizei como base de dados o MongoDB, um banco NO-SQL extremante performático.
 ```
 git clone https://github.com/Leosampc/mobility-test.git
 cd mobility-test
-docker-compose up -d
+sudo docker-compose -f docker-compose.yml up -d --build
 
 ```
 
