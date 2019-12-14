@@ -1,15 +1,20 @@
-const LineModel = require('../models/LineModel');
-const ItineraryModel = require('../models/ItineraryModel');
+const Itinerary = require('../schemas/Itinerary');
+const Line = require('../schemas/Line');
 
-const controller = {
-    store: async (req, res) => {
+class ItineraryController {
+    constructor() {
+        this.store = this.store.bind(this);
+        this.update = this.update.bind(this);
+    }
+
+    async store (req, res) {
         const { line_id, itineraries } = req.body;
 
-        const line = await controller.checkIfLineExists(line_id);
+        const line = await this.checkIfLineExists(line_id);
 
         if(!line) return res.status(400).json({ error: 'Searched line not exists, please try again.' });
 
-        const itineraryExists = await ItineraryModel.findOne({ line_id });
+        const itineraryExists = await Itinerary.findOne({ line_id });
 
         if(itineraryExists) {
             itineraries.forEach(itinerary => itineraryExists.location.coordinates.push(itinerary));
@@ -19,7 +24,7 @@ const controller = {
 
         const { _id: line_objectId, code: line_code, name: line_name } = line;
         
-        await ItineraryModel.create({
+        await Itinerary.create({
             line_objectId,
             line_id,
             line_code,
@@ -29,23 +34,22 @@ const controller = {
                 coordinates: itineraries
             }
         }, (err, itinerary) => {
-            console.log(err);
-            if(err) res.status(400).json({ error: 'An error has ocurred when trying to create a new itinerary, please try again.' });
+            if(err) return res.status(400).json({ error: 'An error has ocurred when trying to create a new itinerary, please try again.' });
 
-            res.json(itinerary);
+            return res.json(itinerary);
         });
-    },
+    }
 
-    update: async (req, res) => {
+    async update (req, res) {
         const { line_id } = req.params;
 
         const { itineraries } = req.body;
 
-        const line = await controller.checkIfLineExists(line_id);
+        const line = await this.checkIfLineExists(line_id);
 
         if(!line) return res.status(400).json({ error: 'Searched line not exists, please try again.' });
 
-        const itinerary = await ItineraryModel.findOne({ line_id });
+        const itinerary = await Itinerary.findOne({ line_id });
 
         if(itinerary) {
             const { code, name } = line;
@@ -58,19 +62,19 @@ const controller = {
 
             itinerary.save();
             
-            res.json(itinerary);
+            return res.json(itinerary);
         } else {
-            res.status(404).json({ error: 'Itinerary not found, please try again.' });
+            return res.status(404).json({ error: 'Itinerary not found, please try again.' });
         }
-    },
+    }
 
-    getItinerariesByLocation: async (req, res) => {
+    async getItinerariesByLocation (req, res) {
         const { lat, lng, distance } = req.query;
 
         if(!Number(lat) || !Number(lng) || !Number(distance)) return res.status(400).json({ error: "Query params are invalid, please try again." });
         
         try {
-            const itineraries = await ItineraryModel.find({
+            const itineraries = await Itinerary.find({
                 location: {
                     $near: {
                         $maxDistance: distance * 1000,
@@ -97,36 +101,36 @@ const controller = {
         } catch (err) {
             return res.status(400).json({ error: "An error has ocurred, please try again." });
         }
-    },
+    }
 
-    findAll: async (req, res) => {
+    async findAll (req, res) {
         const { line_id = null } = req.query;
 
         const query = line_id
             ? { line_id }
             : { }
 
-        await ItineraryModel.find(query, (err, result) => {
+        await Itinerary.find(query, (err, result) => {
             if(err) return res.status(400).json({ error: 'An error has ocurred while trying to itineraries, please try again.' });
 
             return res.json(result);
         });
-    },
+    }
 
-    deleteByLineId: async (req, res) => {
+    async deleteByLineId (req, res) {
         const { line_id } = req.params;
 
-        await ItineraryModel.deleteOne({ line_id });
+        await Itinerary.deleteOne({ line_id });
 
-        res.send("Operation successful!");
-    },
+        return res.send("Operation successful!");
+    }
 
-    deleteItinerariesByLineId: async (req, res) => {
+    async deleteItinerariesByLineId (req, res) {
         const { line_id } = req.params;
 
         const { itineraries } = req.body;
 
-        const current_itinerary = await ItineraryModel.findOne({ line_id });
+        const current_itinerary = await Itinerary.findOne({ line_id });
 
         if(!current_itinerary) return res.status(400).json({ error: "Itinerary not found, please try again." });
 
@@ -145,13 +149,13 @@ const controller = {
         current_itinerary.save();
 
         return res.json(current_itinerary);
-    },
+    }
 
-    checkIfLineExists: async id => {
-        const line = await LineModel.findOne({ id });
+    async checkIfLineExists (id) {
+        const line = await Line.findOne({ id });
 
         return line || null;
-    },
+    }
 }
 
-module.exports = controller;
+module.exports = new ItineraryController();
