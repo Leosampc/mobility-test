@@ -1,8 +1,10 @@
 ﻿# Mobility-test
  
-Essa aplicação foi desenvolvida com o intuito de realizar um teste de conhecimentos de NodeJS, além de suas tecnologias relacionadas. 
-Foi criado um sistema de APIs REST, com o intuito de integrar, manusear e fornecer informações relacionadas à serviços de transporte público.
-Utilizei como base de dados o MongoDB, um banco NO-SQL extremante performático. Um dos principais motivos em optar pelo Mongo foi por conta de o mesmo possuir uma grande gama de funcionalidades relacionadas à geolocalização, um dos grandes pontos do teste.
+This application was developed in order to perform a knowledge test of NodeJS, as well as its related technologies. 
+
+A system of REST APIs was created to integrate, handle and provide information related to public transport services.
+
+I used MongoDB as a database, an extremely performing NO-SQL database. One of the main reasons for choosing Mongo was that it has a wide range of features related to geolocation, one of the great points of the test.
 
 **How to run the project**
 
